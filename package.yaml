@@ -40,3 +40,4 @@ tests:
     dependencies:
     - daily-coding-problem
     - hspec
+    - QuickCheck
