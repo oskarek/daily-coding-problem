@@ -1,7 +1,7 @@
 module DailyCodingProblem.Year2019.June.June9Spec (spec) where
 
 import Test.Hspec
-import DailyCodingProblem.Year2019.June.June9
+import DailyCodingProblem.Year2019.June.June9.Solution
 
 spec :: Spec
 spec =
