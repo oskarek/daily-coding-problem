@@ -1,4 +1,4 @@
-module DailyCodingProblem.Year2019.June.June9.Solution where
+module DailyCodingProblem.Problem1.Solution where
 
 import           Data.List                      ( tails )
 

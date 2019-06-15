@@ -1,4 +1,4 @@
-module DailyCodingProblem.Year2019.June.June10.Solution where
+module DailyCodingProblem.Problem2.Solution where
 
 import           Data.Monoid
 

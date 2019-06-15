@@ -1,4 +1,4 @@
-module DailyCodingProblem.Year2019.June.June12.Solution where
+module DailyCodingProblem.Problem4.Solution where
 
 import qualified Data.List                     as L
 import qualified Data.Maybe                    as M

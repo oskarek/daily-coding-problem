@@ -1,4 +1,4 @@
-module DailyCodingProblem.Year2019.June.June13.Solution where
+module DailyCodingProblem.Problem5.Solution where
 
 cons :: a -> b -> ((a -> b -> c) -> c)
 cons a b =

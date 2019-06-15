@@ -1,8 +1,8 @@
-module DailyCodingProblem.Year2019.June.June11Spec (spec) where
+module DailyCodingProblem.Problem3Spec (spec) where
 
 import Test.Hspec
 import Test.Hspec.QuickCheck
-import DailyCodingProblem.Year2019.June.June11.Solution
+import DailyCodingProblem.Problem3.Solution
 
 spec :: Spec
 spec = do

@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleInstances #-}
-module DailyCodingProblem.Year2019.June.June11.Solution where
+module DailyCodingProblem.Problem3.Solution where
 
 import           Text.Megaparsec         hiding ( parse )
 import           Data.Maybe                     ( fromJust )
