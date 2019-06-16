@@ -34,3 +34,9 @@ spec = do
             \message ->
                 let message' = (\(Digit d) -> d) <$> message
                 in  numberOfDecodings message' == numberOfDecodings' message'
+
+    describe "numberOfDecodings and numberOfDecodings''" $
+        prop "they are equal" $
+            \message ->
+                let message' = (\(Digit d) -> d) <$> message
+                in  numberOfDecodings message' == numberOfDecodings'' message'

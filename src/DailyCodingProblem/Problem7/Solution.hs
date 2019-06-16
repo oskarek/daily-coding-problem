@@ -3,6 +3,7 @@ module DailyCodingProblem.Problem7.Solution where
 import qualified Data.Set                      as S
 import qualified Data.Map                      as M
 import qualified Data.Char                     as Ch
+import Data.Maybe (fromMaybe)
 
 type DecodedMessage = String
 type EncodedMessage = String
@@ -44,3 +45,19 @@ possibleDecodings = maybe S.empty go . traverse digitToInt
 -- Now numberOfDecodings can be expressed in terms of possibleDecodings
 numberOfDecodings' :: EncodedMessage -> Int
 numberOfDecodings' = length . possibleDecodings
+
+---- BONUS 2: MUCH more efficient numberOfDecodings ----
+
+-- This version is O(n) as opposed to O(2^n) for the previous versions.
+numberOfDecodings'' :: EncodedMessage -> Int
+numberOfDecodings'' = maybe 0 go . traverse digitToInt
+  where
+    go xs =
+      let pairs = zip xs (fmap Just (drop 1 xs) ++ [Nothing])
+      in  fst $ foldr f (1, 0) pairs
+      where
+        f (x,y) (s1,s2) = if x == 0 then (0, s1) else (s1+path2, s1)
+          where
+            path2 = fromMaybe 0 $ do
+              y' <- y
+              return (if (10*x + y') <= 26 then s2 else 0)
