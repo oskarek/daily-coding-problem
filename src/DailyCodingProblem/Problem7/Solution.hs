@@ -1,9 +1,7 @@
-
 module DailyCodingProblem.Problem7.Solution where
 
 import qualified Data.Set                      as S
 import qualified Data.Map                      as M
-import           Data.Ix                        ( inRange )
 import qualified Data.Char                     as Ch
 
 type DecodedMessage = String
@@ -18,10 +16,9 @@ numberOfDecodings = maybe 0 go . traverse digitToInt
   where
     go []  = 1
     go [x] = if x == 0 then 0 else 1
-    go (x : y : xs) =
-      let path1 = if x <= 0 then 0 else go (y : xs)
-          path2 = if inRange (1,26) (10*x + y) then go xs else 0
-      in  path1 + path2
+    go (x : y : xs) = if x <= 0 then 0 else path1 + path2
+      where path1 = go (y : xs)
+            path2 = if (10*x + y) <= 26 then go xs else 0
 
 
 ---- BONUS: Solution to also get the actual decodings ----
@@ -35,7 +32,7 @@ possibleDecodings = maybe S.empty go . traverse digitToInt
   where
     go []           = S.singleton ""
     go [x]          = maybe S.empty (S.singleton . (:[])) (mapping M.!? x)
-    go (x : y : xs) = path1 <> path2
+    go (x : y : xs) = if x == 0 then S.empty else path1 <> path2
       where
         path1 = case mapping M.!? x of
           Nothing -> S.empty

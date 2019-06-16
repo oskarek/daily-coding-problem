@@ -23,6 +23,9 @@ spec = do
         it "handles empty messages" $
             numberOfDecodings [] `shouldBe` 1
 
+        it "doesn't allow '01' as a message" $
+            numberOfDecodings "01" `shouldBe` 0
+
         it "gives 3 as result for message '111'" $
             numberOfDecodings "111" `shouldBe` 3
 
