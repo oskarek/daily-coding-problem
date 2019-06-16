@@ -3,7 +3,12 @@ module DailyCodingProblem.Problem7Spec (spec) where
 
 import Test.Hspec
 import Test.Hspec.QuickCheck
+import Test.QuickCheck
 import DailyCodingProblem.Problem7.Solution
+
+newtype Digit = Digit Char deriving (Eq, Show)
+instance Arbitrary Digit where
+    arbitrary = Digit <$> choose ('0', '9')
 
 spec :: Spec
 spec = do
@@ -23,4 +28,6 @@ spec = do
 
     describe "numberOfDecodings and numberOfDecodings'" $
         prop "they are equal" $
-            \message -> numberOfDecodings message == numberOfDecodings' message
+            \message ->
+                let message' = (\(Digit d) -> d) <$> message
+                in  numberOfDecodings message' == numberOfDecodings' message'
