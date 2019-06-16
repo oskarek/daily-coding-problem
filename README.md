@@ -8,3 +8,4 @@ My solutions to problems from [Daily Coding Problem](https://www.dailycodingprob
 * [Problem 3](src/DailyCodingProblem/Problem3)
 * [Problem 4](src/DailyCodingProblem/Problem4)
 * [Problem 5](src/DailyCodingProblem/Problem5)
+* [Problem 7](src/DailyCodingProblem/Problem7)
