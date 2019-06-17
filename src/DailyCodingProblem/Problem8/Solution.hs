@@ -1,11 +1,7 @@
 module DailyCodingProblem.Problem8.Solution where
 
 import Data.Maybe (isJust)
-
-data BinTree a =
-    Leaf
-    | Node (BinTree a) a (BinTree a)
-    deriving (Eq, Show)
+import DailyCodingProblem.Utils.BinTree
 
 -- | Get the subtrees of a tree.
 subtrees :: BinTree a -> [BinTree a]

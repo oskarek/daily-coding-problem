@@ -2,6 +2,7 @@ module DailyCodingProblem.Problem8Spec (spec) where
 
 import Test.Hspec
 import DailyCodingProblem.Problem8.Solution
+import DailyCodingProblem.Utils.BinTree
 
 tree :: BinTree Int
 tree =

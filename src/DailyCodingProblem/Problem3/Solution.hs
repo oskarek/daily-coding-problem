@@ -7,11 +7,7 @@ import qualified DailyCodingProblem.Utils.Parsing
                                                as P
 import           DailyCodingProblem.Utils.Parsing
                                                 ( Parser )
-
-data BinTree a =
-    Leaf
-  | Node (BinTree a) a (BinTree a)
-  deriving (Eq, Show)
+import DailyCodingProblem.Utils.BinTree
 
 class Parsable a where parse :: Parser a
 instance Parsable a => Parsable (BinTree a) where
@@ -44,13 +40,3 @@ parseNode = do
 
 parseTree :: Parsable a => Parser (BinTree a)
 parseTree = P.lexeme (P.parens parseNode <|> parseLeaf)
-
-
----- Test support for QuickCheck -----
-treeFromList :: Ord a => [a] -> BinTree a
-treeFromList = foldr insert Leaf
-
-insert :: Ord a => a -> BinTree a -> BinTree a
-insert x Leaf = Node Leaf x Leaf
-insert x (Node l v r) =
-    if x < v then Node (insert x l) v r else Node l v (insert x r)

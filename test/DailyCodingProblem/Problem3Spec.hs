@@ -3,13 +3,13 @@ module DailyCodingProblem.Problem3Spec (spec) where
 import Test.Hspec
 import Test.Hspec.QuickCheck
 import DailyCodingProblem.Problem3.Solution
+import DailyCodingProblem.Utils.BinTree
 
 spec :: Spec
 spec = do
     describe "serialize & deserialize" $
         prop "deserialize . serialize = id" $
-            \xs -> let tree = treeFromList (xs :: [Int])
-                    in (deserialize . serialize) tree == tree
+            \tree -> (deserialize . serialize) tree == (tree :: BinTree Int)
 
     describe "serialize" $ do
         it "handles a leaf correctly" $
