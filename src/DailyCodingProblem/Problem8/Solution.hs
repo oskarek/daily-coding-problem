@@ -1,6 +1,5 @@
 module DailyCodingProblem.Problem8.Solution where
 
-import Data.Maybe (isJust)
 import DailyCodingProblem.Utils.BinTree
 
 -- | Get the subtrees of a tree.
@@ -8,15 +7,16 @@ subtrees :: BinTree a -> [BinTree a]
 subtrees Leaf = []
 subtrees t@(Node l _ r) = subtrees l ++ [t] ++ subtrees r
 
--- | If tree is unival, get the common value. Else Nothing.
-univalValue :: Eq a => BinTree a -> Maybe a
-univalValue Leaf = Nothing
-univalValue (Node l v r) = if eqVal l && eqVal r then Just v else Nothing
-    where eqVal t = maybe True (== v) $ univalValue t
+-- | Get the root value of the tree, if one exists.
+rootValue :: BinTree a -> Maybe a
+rootValue Leaf = Nothing
+rootValue (Node _ v _) = Just v
 
 -- | Return whether all values in tree are the same.
 isUnival :: Eq a => BinTree a -> Bool
-isUnival = isJust . univalValue
+isUnival Leaf = True
+isUnival (Node l v r) = and [isUnival l, eqVal l, isUnival r, eqVal r]
+    where eqVal = maybe True (== v) . rootValue
 
 -- | Get all unival subtrees of a tree.
 univalSubtrees :: Eq a => BinTree a -> [BinTree a]

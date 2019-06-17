@@ -1,6 +1,7 @@
 module DailyCodingProblem.Problem8Spec (spec) where
 
 import Test.Hspec
+import Test.Hspec.QuickCheck
 import DailyCodingProblem.Problem8.Solution
 import DailyCodingProblem.Utils.BinTree
 
@@ -52,3 +53,12 @@ spec = do
         
         it "gives 5 for the example tree" $
             univalSubtreeCount tree `shouldBe` 5
+
+    describe "isUnival" $ do
+        prop "returns False when at least two values in tree differ" $
+            \xs xs' xs'' v -> let tree' = fromList (xs ++ [v] ++ xs' ++ [v+1] ++ xs'') :: BinTree Int
+                              in  isUnival tree' `shouldBe` False
+
+        prop "return True when all values are the same" $
+            \n -> let tree' = fromList (replicate n 0) :: BinTree Int
+                   in isUnival tree' `shouldBe` True
