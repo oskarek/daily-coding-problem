@@ -27,6 +27,9 @@ dependencies:
 - megaparsec
 - containers
 - QuickCheck
+- mtl
+- random
+- lens
 
 library:
   source-dirs: src
