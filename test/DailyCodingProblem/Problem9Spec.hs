@@ -17,4 +17,3 @@ spec =
 
         it "should handle negative numbers" $
             largestNonAdjacentSum [-1, -4, -5, 8] `shouldBe` 8
-            
