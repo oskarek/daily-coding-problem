@@ -43,3 +43,15 @@ tests:
     - daily-coding-problem
     - hspec
     - QuickCheck
+
+benchmarks:
+  daily-coding-problem-benchmarks:
+    main: Bench.hs
+    source-dirs: benchmark
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - daily-coding-problem
+    - criterion
