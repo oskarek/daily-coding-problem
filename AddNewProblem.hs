@@ -1,5 +1,5 @@
 #!/usr/bin/env stack
--- stack --resolver lts-13.25 script
+-- stack --resolver nightly-2020-08-29 script
 
 -- | Script to add boilerplate code to a new coding problem.
 {-# LANGUAGE OverloadedStrings #-}
@@ -61,7 +61,10 @@ addLinkToReadme n =
 buildProject = proc "stack" ["build", "--test", "--no-run-tests"] empty
 
 main = do
-    n <- T.pack . show <$> getProblemNumber
+    args <- getArgs
+    n <- case args of
+        (x : _) -> return (T.pack x)
+        _ -> T.pack . show <$> getProblemNumber
     createSrcFiles n
     createTestFiles n
     addLinkToReadme n
