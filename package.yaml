@@ -1,14 +1,14 @@
-name:                daily-coding-problem
-version:             0.1.0.0
-github:              "oskarek/daily-coding-problem"
-license:             BSD3
-author:              "Oskar Ek"
-maintainer:          "oek@kth.se"
-copyright:           "Copyright (c) 2019 Oskar Ek"
+name: daily-coding-problem
+version: 0.1.0.0
+github: "oskarek/daily-coding-problem"
+license: BSD3
+author: "Oskar Ek"
+maintainer: "oek@kth.se"
+copyright: "Copyright (c) 2019 Oskar Ek"
 
 extra-source-files:
-- README.md
-- ChangeLog.md
+  - README.md
+  - ChangeLog.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,45 +17,46 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/oskarek/daily-coding-problem#readme>
+description: Please see the README on GitHub at <https://github.com/oskarek/daily-coding-problem#readme>
 
 ghc-options:
-- -Wall
+  - -Wall
 
 dependencies:
-- base >= 4.7 && < 5
-- megaparsec
-- containers
-- QuickCheck
-- mtl
-- random
-- lens
-- vector
+  - base >= 4.7 && < 5
+  - megaparsec
+  - containers
+  - hspec
+  - QuickCheck
+  - mtl
+  - random
+  - lens
+  - vector
 
 library:
   source-dirs: src
 
 tests:
   daily-coding-problem-test:
-    main:                Spec.hs
-    source-dirs:         test
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - daily-coding-problem
-    - hspec
-    - QuickCheck
+      - daily-coding-problem
+      - hspec
+      - QuickCheck
 
 benchmarks:
   daily-coding-problem-benchmarks:
     main: Bench.hs
     source-dirs: benchmark
     ghc-options:
-    - -rtsopts
-    - -threaded
-    - -with-rtsopts=-N
+      - -rtsopts
+      - -threaded
+      - -with-rtsopts=-N
     dependencies:
-    - daily-coding-problem
-    - criterion
+      - daily-coding-problem
+      - criterion
