@@ -22,3 +22,11 @@ foldlWhile :: Foldable t
               -> (b -> a -> b) -> b -> t a -> b
 foldlWhile pred reducer acc =
   runIdentity . foldMWhile pred (\b a -> Identity $ reducer b a) acc
+
+-- | The number of elements satisfying the predicate.
+count :: (a -> Bool) -> [a] -> Int
+count pred = length . filter pred
+
+-- | The number of occurrences of the specified element in the list.
+occurrences :: Eq a => a -> [a] -> Int
+occurrences x = count (== x)
